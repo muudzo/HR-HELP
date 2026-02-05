@@ -1,0 +1,71 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7D1A5F5B-5D5B-4A5A-9A9A-9A9A9A9A9A9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8D2B6F6C-6D6C-5B6B-0B0B-0B0B0B0B0B0B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7557}") = "HrDesk.Core", "src\HrDesk.Core\HrDesk.Core.csproj", "{1A2B3C4D-5E6F-7G8H-9I0J-1K2L3M4N5O6P}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7557}") = "HrDesk.Api", "src\HrDesk.Api\HrDesk.Api.csproj", "{2B3C4D5E-6F7G-8H9I-0J1K-2L3M4N5O6P7Q}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7557}") = "HrDesk.Ai", "src\HrDesk.Ai\HrDesk.Ai.csproj", "{3C4D5E6F-7G8H-9I0J-1K2L-3M4N5O6P7Q8R}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7557}") = "HrDesk.PeopleHum", "src\HrDesk.PeopleHum\HrDesk.PeopleHum.csproj", "{4D5E6F7G-8H9I-0J1K-2L3M-4N5O6P7Q8R9S}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7557}") = "HrDesk.Audit", "src\HrDesk.Audit\HrDesk.Audit.csproj", "{5E6F7G8H-9I0J-1K2L-3M4N-5O6P7Q8R9S0T}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7557}") = "HrDesk.BackgroundJobs", "src\HrDesk.BackgroundJobs\HrDesk.BackgroundJobs.csproj", "{6F7G8H9I-0J1K-2L3M-4N5O-6P7Q8R9S0T1U}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7557}") = "HrDesk.Admin", "src\HrDesk.Admin\HrDesk.Admin.csproj", "{7G8H9I0J-1K2L-3M4N-5O6P-7Q8R9S0T1U2V}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7557}") = "HrDesk.Infrastructure", "src\HrDesk.Infrastructure\HrDesk.Infrastructure.csproj", "{8H9I0J1K-2L3M-4N5O-6P7Q-8R9S0T1U2V3W}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7557}") = "HrDesk.Tests", "tests\HrDesk.Tests\HrDesk.Tests.csproj", "{9I0J1K2L-3M4N-5O6P-7Q8R-9S0T1U2V3W4X}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A2B3C4D-5E6F-7G8H-9I0J-1K2L3M4N5O6P}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A2B3C4D-5E6F-7G8H-9I0J-1K2L3M4N5O6P}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A2B3C4D-5E6F-7G8H-9I0J-1K2L3M4N5O6P}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A2B3C4D-5E6F-7G8H-9I0J-1K2L3M4N5O6P}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B3C4D5E-6F7G-8H9I-0J1K-2L3M4N5O6P7Q}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B3C4D5E-6F7G-8H9I-0J1K-2L3M4N5O6P7Q}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B3C4D5E-6F7G-8H9I-0J1K-2L3M4N5O6P7Q}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B3C4D5E-6F7G-8H9I-0J1K-2L3M4N5O6P7Q}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C4D5E6F-7G8H-9I0J-1K2L-3M4N5O6P7Q8R}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C4D5E6F-7G8H-9I0J-1K2L-3M4N5O6P7Q8R}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C4D5E6F-7G8H-9I0J-1K2L-3M4N5O6P7Q8R}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C4D5E6F-7G8H-9I0J-1K2L-3M4N5O6P7Q8R}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D5E6F7G-8H9I-0J1K-2L3M-4N5O6P7Q8R9S}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D5E6F7G-8H9I-0J1K-2L3M-4N5O6P7Q8R9S}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D5E6F7G-8H9I-0J1K-2L3M-4N5O6P7Q8R9S}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D5E6F7G-8H9I-0J1K-2L3M-4N5O6P7Q8R9S}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E6F7G8H-9I0J-1K2L-3M4N-5O6P7Q8R9S0T}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E6F7G8H-9I0J-1K2L-3M4N-5O6P7Q8R9S0T}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E6F7G8H-9I0J-1K2L-3M4N-5O6P7Q8R9S0T}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E6F7G8H-9I0J-1K2L-3M4N-5O6P7Q8R9S0T}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F7G8H9I-0J1K-2L3M-4N5O-6P7Q8R9S0T1U}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7G8H9I-0J1K-2L3M-4N5O-6P7Q8R9S0T1U}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F7G8H9I-0J1K-2L3M-4N5O-6P7Q8R9S0T1U}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F7G8H9I-0J1K-2L3M-4N5O-6P7Q8R9S0T1U}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7G8H9I0J-1K2L-3M4N-5O6P-7Q8R9S0T1U2V}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7G8H9I0J-1K2L-3M4N-5O6P-7Q8R9S0T1U2V}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7G8H9I0J-1K2L-3M4N-5O6P-7Q8R9S0T1U2V}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7G8H9I0J-1K2L-3M4N-5O6P-7Q8R9S0T1U2V}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8H9I0J1K-2L3M-4N5O-6P7Q-8R9S0T1U2V3W}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8H9I0J1K-2L3M-4N5O-6P7Q-8R9S0T1U2V3W}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8H9I0J1K-2L3M-4N5O-6P7Q-8R9S0T1U2V3W}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8H9I0J1K-2L3M-4N5O-6P7Q-8R9S0T1U2V3W}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9I0J1K2L-3M4N-5O6P-7Q8R-9S0T1U2V3W4X}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9I0J1K2L-3M4N-5O6P-7Q8R-9S0T1U2V3W4X}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9I0J1K2L-3M4N-5O6P-7Q8R-9S0T1U2V3W4X}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9I0J1K2L-3M4N-5O6P-7Q8R-9S0T1U2V3W4X}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

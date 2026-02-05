@@ -1,4 +1,14 @@
 using Serilog;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Hangfire;
+using HrDesk.Api.Services;
+using HrDesk.Ai.Extensions;
+using HrDesk.PeopleHum.Extensions;
+using HrDesk.Audit.Extensions;
+using HrDesk.Admin.Extensions;
+using HrDesk.BackgroundJobs.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,12 +21,52 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
-// Add services to the container
+// Add JWT Authentication
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var secretKey = jwtSettings["SecretKey"];
+var issuer = jwtSettings["Issuer"];
+var audience = jwtSettings["Audience"];
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey ?? "STUB_SECRET_KEY_FOR_DEVELOPMENT_ONLY")),
+            ValidateIssuer = true,
+            ValidIssuer = issuer,
+            ValidateAudience = true,
+            ValidAudience = audience,
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero
+        };
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                Log.Warning("Authentication failed: {Exception}", context.Exception.Message);
+                return Task.CompletedTask;
+            }
+        };
+    });
+
+// Add Authorization
+builder.Services.AddAuthorization();
+
+// Add services
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "HrDesk API", Version = "v1" });
+    c.SwaggerDoc("v1", new() 
+    { 
+        Title = "HrDesk API", 
+        Version = "v1",
+        Description = "AI-Powered HR Help Desk - Phase 1: Skeleton Infrastructure",
+        Contact = new() { Name = "HR Tech Team" }
+    });
     
     // Add JWT authentication to Swagger
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
@@ -58,6 +108,14 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Add application services
+builder.Services.AddScoped<UserContextService>();
+builder.Services.AddAiOrchestration();
+builder.Services.AddPeopleHumConnector();
+builder.Services.AddAuditLogging();
+builder.Services.AddBackgroundJobs();
+builder.Services.AddAdminServices();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
@@ -71,15 +129,27 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+// Use audit logging middleware
+app.UseAuditLogging();
+
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 
+// Configure Hangfire dashboard
+app.UseHangfireDashboard("/hangfire");
+
+// Use authentication and authorization
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 app.MapHealthChecks("/health");
 
+// Log startup info
 Log.Information("HrDesk API starting up...");
+Log.Information("Environment: {Environment}", app.Environment.EnvironmentName);
+Log.Information("Swagger UI available at: http://localhost:5000/swagger");
+Log.Information("Hangfire Dashboard available at: http://localhost:5000/hangfire");
 
 try
 {
