@@ -10,7 +10,14 @@ using HrDesk.Audit.Extensions;
 using HrDesk.Admin.Extensions;
 using HrDesk.BackgroundJobs.Extensions;
 
+using Microsoft.EntityFrameworkCore;
+using HrDesk.Infrastructure.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add DbContext
+builder.Services.AddDbContext<HrDeskDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
@@ -150,6 +157,21 @@ Log.Information("HrDesk API starting up...");
 Log.Information("Environment: {Environment}", app.Environment.EnvironmentName);
 Log.Information("Swagger UI available at: http://localhost:5000/swagger");
 Log.Information("Hangfire Dashboard available at: http://localhost:5000/hangfire");
+
+// Seed database
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<HrDeskDbContext>();
+        DbInitializer.Initialize(context);
+    }
+    catch (Exception ex)
+    {
+        Log.Error(ex, "An error occurred while seeding the database.");
+    }
+}
 
 try
 {

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  hrdesk-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: hrdesk-sql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlvolume:/var/opt/mssql/data
+
+volumes:
+  sqlvolume:
