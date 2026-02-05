@@ -117,7 +117,7 @@ builder.Services.AddCors(options =>
 
 // Add application services
 builder.Services.AddScoped<UserContextService>();
-builder.Services.AddAiOrchestration();
+builder.Services.AddAiOrchestration(builder.Configuration);
 builder.Services.AddPeopleHumConnector();
 builder.Services.AddAuditLogging();
 builder.Services.AddBackgroundJobs();
