@@ -1,5 +1,6 @@
 namespace HrDesk.Audit.Middleware;
 
+using Microsoft.AspNetCore.Http;
 using HrDesk.Core.Interfaces;
 using HrDesk.Core.Models;
 

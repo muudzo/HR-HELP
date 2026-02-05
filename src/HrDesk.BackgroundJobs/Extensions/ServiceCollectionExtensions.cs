@@ -2,15 +2,17 @@ namespace HrDesk.BackgroundJobs.Extensions;
 
 using Microsoft.Extensions.DependencyInjection;
 using Hangfire;
+using Hangfire.MemoryStorage;
 
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddBackgroundJobs(this IServiceCollection services)
     {
         // Use in-memory job storage for Phase 1 (non-production)
+        GlobalConfiguration.Configuration.UseMemoryStorage();
         services.AddHangfire(configuration =>
         {
-            configuration.UseInMemoryStorage();
+            // Configuration already set via GlobalConfiguration
         });
 
         services.AddHangfireServer();
