@@ -1,0 +1,10 @@
+localhost
+
+# Route requests to backend API 1
+reverse_proxy /api1/* localhost:5001
+
+# Route requests to backend API 2
+reverse_proxy /api2/* localhost:5002
+
+# Route all other requests to frontend
+reverse_proxy / localhost:3000
